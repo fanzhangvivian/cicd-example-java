@@ -1,10 +1,13 @@
-# Replace field names as needed to match your CI/CD schema.
-# Goal: a fully successful pipeline.
 pipeline:
   name: java-success
-  stages:
-    - name: verify
-      jobs:
-        - name: build-and-test
-          steps:
-            - run: mvn -B clean test
+  description: A successful Java pipeline
+
+stages:
+  - verify
+
+build-and-test:
+  stage: verify
+  image: maven:3.9-eclipse-temurin-21
+  script:
+    - echo "Running build and tests..."
+    - mvn -B clean test

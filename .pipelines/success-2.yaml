@@ -9,10 +9,5 @@ compile:
   stage: build
   image: eclipse-temurin:17
   script:
-    - set -x
-    - java -version
-    - javac -version
-    - pwd
-    - ls -R
     - mkdir -p out/main
     - javac -d out/main $(find src/main/java -name '*.java')

@@ -9,9 +9,9 @@ stages:
 compile:
   stage: build
   image: eclipse-temurin:17
-  script: scripts/compile.sh
+  script: sh scripts/compile.sh
 
 run-tests:
   stage: test
   image: eclipse-temurin:17
-  script: scripts/test.sh
+  script: sh scripts/test.sh

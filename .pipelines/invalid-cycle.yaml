@@ -6,10 +6,12 @@ stages:
 
 job-a:
   stage: build
+  image: eclipse-temurin:21
   needs: [job-b]
   script: scripts/compile.sh
 
 job-b:
   stage: build
+  image: eclipse-temurin:21
   needs: [job-a]
   script: scripts/compile.sh

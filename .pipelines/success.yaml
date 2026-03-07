@@ -8,7 +8,7 @@ stages:
 
 compile:
   stage: build
-  image: eclipse-temurin:17
+  image: eclipse-temurin:21
   script:
     - rm -rf out/main
     - mkdir -p out/main
@@ -16,7 +16,7 @@ compile:
 
 run-tests:
   stage: test
-  image: eclipse-temurin:17
+  image: eclipse-temurin:21
   script:
     - rm -rf out/main out/test
     - mkdir -p out/main out/test

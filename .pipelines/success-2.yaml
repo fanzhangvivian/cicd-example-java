@@ -10,9 +10,6 @@ compile:
   image: eclipse-temurin:17
   script:
     - pwd
-    - ls
-    - ls src
-    - ls src/main
-    - ls src/main/java
-    - ls -R
-    - javac src/main/java/com/example/App.java
+    - find src/main/java -name '*.java'
+    - mkdir -p out/main
+    - javac -d out/main src/main/java/com/example/App.java src/main/java/com/example/Calculator.java

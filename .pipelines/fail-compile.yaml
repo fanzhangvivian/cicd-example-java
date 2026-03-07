@@ -1,14 +1,18 @@
 # Goal: pipeline fails during compilation.
 pipeline:
   name: java-compile-failure
-  stages:
-    - name: prepare
-      jobs:
-        - name: enable-broken-source
-          steps:
-            - run: cp src/main/java/com/example/BrokenSource.java.template src/main/java/com/example/BrokenSource.java
-    - name: build
-      jobs:
-        - name: compile
-          steps:
-            - run: mvn -B clean compile
+
+stages:
+  - prepare
+  - build
+
+enable-broken-source:
+  stage: prepare
+  image: eclipse-temurin:17
+  script: cp src/main/java/com/example/BrokenSource.java.template src/main/java/com/example/BrokenSource.java
+
+
+compile:
+  stage: build
+  image: eclipse-temurin:17
+  script: mvn -B clean compile

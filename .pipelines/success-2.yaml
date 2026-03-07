@@ -1,6 +1,6 @@
 pipeline:
-  name: MY-VERY-OBVIOUS-PIPELINE
-  description: test
+  name: JAVA-TEST
+  description: compile demo
 
 stages:
   - build
@@ -9,4 +9,5 @@ compile:
   stage: build
   image: eclipse-temurin:17
   script:
-    - echo "HELLO-12345"
+    - ls -R
+    - javac src/main/java/com/example/Calculator.java

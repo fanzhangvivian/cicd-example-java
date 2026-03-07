@@ -1,18 +1,13 @@
-# Goal: pipeline fails during compilation.
 pipeline:
   name: java-compile-failure
+  description: Pipeline fails during compilation
 
 stages:
-  - prepare
   - build
-
-enable-broken-source:
-  stage: prepare
-  image: eclipse-temurin:17
-  script: cp src/main/java/com/example/BrokenSource.java.template src/main/java/com/example/BrokenSource.java
-
 
 compile:
   stage: build
   image: maven:3.9-eclipse-temurin-21
-  script: mvn -B clean compile
+  script:
+    - printf 'package com.example;\npublic class BrokenSource { syntax error }\n' > src/main/java/com/example/BrokenSource.java
+    - mvn -B clean compile

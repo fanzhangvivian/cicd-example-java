@@ -9,5 +9,10 @@ compile:
   stage: build
   image: eclipse-temurin:17
   script:
+    - pwd
+    - ls
+    - ls src
+    - ls src/main
+    - ls src/main/java
     - ls -R
-    - javac src/main/java/com/example/Calculator.java
+    - javac src/main/java/com/example/App.java

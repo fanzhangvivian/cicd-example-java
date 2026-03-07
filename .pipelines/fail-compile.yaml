@@ -9,5 +9,6 @@ compile:
   stage: build
   image: maven:3.9-eclipse-temurin-21
   script:
+    - trap 'rm -f src/main/java/com/example/BrokenSource.java' EXIT
     - printf 'package com.example;\npublic class BrokenSource { syntax error }\n' > src/main/java/com/example/BrokenSource.java
     - mvn -B clean compile

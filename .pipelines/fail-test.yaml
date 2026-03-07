@@ -1,14 +1,16 @@
 # Goal: pipeline reaches test stage but fails due to an intentionally failing test.
 pipeline:
   name: java-test-failure
-  stages:
-    - name: prepare
-      jobs:
-        - name: enable-failing-test
-          steps:
-            - run: cp src/test/java/com/example/CalculatorFailingTest.java src/test/java/com/example/CalculatorFailingTestEnabled.java
-    - name: verify
-      jobs:
-        - name: run-tests
-          steps:
-            - run: mvn -B clean test
+
+stages:
+  - build
+  - test
+
+compile:
+  stage: build
+  script: scripts/compile.sh
+
+failing-tests:
+  stage: test
+  needs: [compile]
+  script: scripts/test-failing.sh

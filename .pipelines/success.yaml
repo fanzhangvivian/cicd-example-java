@@ -3,11 +3,14 @@ pipeline:
   description: A successful Java pipeline
 
 stages:
-  - verify
+  - build
+  - test
 
-build-and-test:
-  stage: verify
-  image: maven:3.9-eclipse-temurin-21
-  script:
-    - echo "Running build and tests..."
-    - mvn -B clean test
+compile:
+  stage: build
+  script: scripts/compile.sh
+
+run-tests:
+  stage: test
+  needs: [compile]
+  script: scripts/test.sh

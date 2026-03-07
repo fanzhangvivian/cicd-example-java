@@ -1,18 +1,19 @@
 package com.example;
 
 /**
- * Small demo class used by the example pipelines.
+ * A tiny calculator used for CI/CD demo pipelines.
  */
 public final class Calculator {
 
-    private Calculator() {
+    public int add(int left, int right) {
+        return left + right;
     }
 
-    public static int add(int a, int b) {
-        return a + b;
+    public int subtract(int left, int right) {
+        return left - right;
     }
 
-    public static boolean isEven(int value) {
-        return value % 2 == 0;
+    public int multiply(int left, int right) {
+        return left * right;
     }
 }

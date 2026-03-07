@@ -1,13 +1,15 @@
 pipeline:
   name: invalid-cycle
-  stages:
-    - name: demo
-      jobs:
-        - name: jobA
-          needs: [jobB]
-          steps:
-            - run: echo "A"
-        - name: jobB
-          needs: [jobA]
-          steps:
-            - run: echo "B"
+
+stages:
+  - build
+
+job-a:
+  stage: build
+  needs: [job-b]
+  script: scripts/compile.sh
+
+job-b:
+  stage: build
+  needs: [job-a]
+  script: scripts/compile.sh

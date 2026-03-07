@@ -1,8 +1,11 @@
 pipeline:
   name: invalid-syntax
-  stages:
-    - name: broken
-      jobs:
-        - name: oops
-          steps:
-            - run mvn -B clean test
+
+stages:
+  - build
+
+# Missing colon
+compile
+  stage: build
+  script: scripts/compile.sh
+

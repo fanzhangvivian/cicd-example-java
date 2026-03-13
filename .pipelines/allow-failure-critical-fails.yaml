@@ -1,0 +1,21 @@
+pipeline:
+  name: allow-failure-critical-fails
+
+stages:
+  - build
+
+lint:
+  stage: build
+  image: alpine:3.19
+  failures: true
+  script:
+    - echo "lint running"
+    - exit 1
+
+compile:
+  stage: build
+  image: alpine:3.19
+  failures: false
+  script:
+    - echo "compile running"
+    - exit 1

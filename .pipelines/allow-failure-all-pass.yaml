@@ -1,0 +1,18 @@
+pipeline:
+  name: allow-failure-all-pass
+
+stages:
+  - build
+
+lint:
+  stage: build
+  image: alpine:3.19
+  failures: true
+  script:
+    - echo "lint passing"
+
+compile:
+  stage: build
+  image: alpine:3.19
+  script:
+    - echo "compile passing"

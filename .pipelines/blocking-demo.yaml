@@ -1,0 +1,13 @@
+pipeline:
+  name: blocking-demo
+
+stages:
+  - build
+
+blocker:
+  stage: build
+  image: alpine:3.19
+  failures: false
+  script:
+    - echo "blocking job running"
+    - sleep 40
